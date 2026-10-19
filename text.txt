@@ -1,0 +1,13 @@
+- GROQ IS  NOT A LLM MODEL BUT IT PROVIDE HARDWARE TO RUN DIFFERENT LLM MODles
+- what is langchain
+- why imp
+- what all possibility are given to us by langchain to build genai
+- what componenets it PROVIDE to generate genai
+
+- LLM MODES - open ai google etc
+- now i want to build with these LLM
+- how can i integrate them with our MODEL
+- open ai - llm model use -> generate api key
+
+https://docs.langchain.com/oss/python/langchain/overview - docs
+docs.langchain.com/oss/python/langchain/component-architecture - component
