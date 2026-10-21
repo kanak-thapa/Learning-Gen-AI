@@ -202,3 +202,31 @@ difference_set = A.difference(B)
 symmetric_diff = A.symmetric_difference(B)
 
 # {1, 2, 4, 5}
+list = ["kanak", 1, 2]
+print(list)
+
+# try:
+#     print(10/0)
+
+# except:
+#     print("exception occured")
+
+# for i in range(0, 3):
+#     if(i%2!=0):
+#         raise ValueError("error has happend")
+
+data = open("text.txt", "r")
+print(data.readlines())
+data.close()
+
+with open("text1.txt", "w") as data:
+    data.write("hello jii kaise hoo???")
+
+with open("text1.txt", "a") as data:
+    data.write("\nlearnin gen ai")
+
+with open("text1.txt", "a") as data:
+    data.write("\nlearnin in 45 days")
+
+with open("new_script,.txt", "x") as data:
+    data.write("this is new file for our script")
