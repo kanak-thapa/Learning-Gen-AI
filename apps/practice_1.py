@@ -1,61 +1,36 @@
-
 from dotenv import load_dotenv
 load_dotenv()
 
-import streamlit as st
 from langchain_groq import ChatGroq
+from langchain_core.prompts import ChatPromptTemplate # we need this for dynamic prompting
+# ChatPromptTemplate is a LangChain class used to create dynamic chat prompts using placeholders. 
+# It allows us to pass different inputs at runtime instead of hardcoding prompts.
 
-# Initialize Groq LLM
-llm = ChatGroq(
-    model="openai/gpt-oss-20b",
-    temperature=0.7
-)
+from langchain_core.output_parsers import StrOutputParser
 
-# Streamlit UI - python library
-# web interface provide
+llm = ChatGroq(model="openai/gpt-oss-20b")
+out = StrOutputParser()
 
-st.title("🤖 ASKBUDDY - AI QNA Bot")
-st.markdown("My QnA Bot with LangChain and Groq!")
+# ans = llm.invoke("who is the pm of india?")
 
+# prompt = [
+#     {"role": "system", "content": "you are translator that translate english into hindi"},
+#     {"role": "user", "content": "my name is kanak"}
+# ]
 
+prompts = ChatPromptTemplate.from_messages([
+    {"role":"system", "content":"you are a translator and translate input in {language}"},#system prompt
+    {"role":"user", "content":"{query}"}
+])
 
-# Initialize chat history
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+final_promts = prompts.format_messages(language = "Korean", query="i love you")
+# final prompts method is a little big 
 
-# Display previous messages
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
-        
-# we want a chat window 
-# Get user input
-query = st.chat_input("Ask anything?")
+def transform(result : str) :
+    return result.upper()
 
-if query:
-    # Display and store user message
-    st.session_state.messages.append({
-        "role": "user",
-        "content": query
-    })
+chains = prompts | llm | out | transform
 
-    with st.chat_message("user"):
-        st.markdown(query)
+res = chains.invoke({"language": "Hindi", "query": "hello kanak"})
+print(res)
 
-    # Get Groq response
-    try:
-        with st.chat_message("assistant"):
-            with st.spinner("ASKBUDDY is thinking..."):
-                res = llm.invoke(query)
-                answer = res.content
-
-            st.markdown(answer)
-
-        # Store assistant response
-        st.session_state.messages.append({
-            "role": "assistant",
-            "content": answer
-        })
-
-    except Exception as e:
-        st.error(f"Something went wrong: {e}")

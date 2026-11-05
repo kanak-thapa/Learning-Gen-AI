@@ -11,3 +11,23 @@
 
 https://docs.langchain.com/oss/python/langchain/overview - docs
 docs.langchain.com/oss/python/langchain/component-architecture - component
+
+What is RAG ?
+RAG (Retrieval-Augmented Generation) in LLMs is a technique that enhances Large Language
+Models by connecting them to external knowledge bases, allowing them to retrieve relevant, up-to-
+date info before generating answers, making responses more accurate, factual, and domain-specific,
+like giving an LLM an "open book" for answers instead of just relying on its internal training data
+
+
+prompts are of two types static prompt and dynamic prompts
+
+static prompts
+promps are the list of tuple with system, user, ai==> system and user 
+prompts can be list of disctionaary with role and content
+
+now lets talk about dynamic
+from langchain_core.prompts import ChatPromptTemplate  
+"StrOutputParser is a LangChain output parser that extracts the textual content from an LLM response and converts it into a plain Python string."
+
+Remember: | is the LCEL pipe operator. It connects different components to create a sequential chain.
+
