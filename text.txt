@@ -31,3 +31,13 @@ from langchain_core.prompts import ChatPromptTemplate
 
 Remember: | is the LCEL pipe operator. It connects different components to create a sequential chain.
 
+Vector embeddings are numerical representations (arrays of
+numbers) that capture the meaning and relationships of complex
+data like wor'ds, sentences, images, or audio, translating them
+into a high-dimensional space where similar items are clustered
+together. This allows machines to process, compare, and
+understand unstructured data for tasks like semantic search, recommendations, and
+analysis, bridging the gap between human language and computer
+understanding.
+
+9a8df75ef8ff4e04907b21e78143cdbb.6ngl626EIPxHNBFWMGwBEkQX
